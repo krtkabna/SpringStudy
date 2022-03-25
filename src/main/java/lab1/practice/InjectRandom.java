@@ -8,6 +8,5 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.FIELD)
 public @interface InjectRandom {
-    String type() default "int";
-    String limit() default "10";
+    int limit() default 10;
 }

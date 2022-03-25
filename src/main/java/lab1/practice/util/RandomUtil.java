@@ -1,4 +1,4 @@
-package lab1.practice.service;
+package lab1.practice.util;
 
 import lab1.practice.exception.UnsupportedTypeException;
 import org.apache.commons.lang3.RandomStringUtils;
@@ -14,11 +14,11 @@ public class RandomUtil {
     private RandomUtil() {
     }
 
-    public static Object getRandom(String type, String limit) {
+    public static Object getRandom(String type, int limit) {
         return switch (type) {
-            case INT -> RANDOM.nextInt(Integer.parseInt(limit));
-            case DOUBLE -> RANDOM.nextDouble(Double.parseDouble(limit));
-            case STRING -> generateString(Integer.parseInt(limit));
+            case INT -> RANDOM.nextInt(limit);
+            case DOUBLE -> RANDOM.nextDouble(limit);
+            case STRING -> generateString(limit);
             default -> throw new UnsupportedTypeException(String.format("Type '%s' is not supported", type));
         };
     }

@@ -1,6 +1,6 @@
 package lab1.practice;
 
-import lab1.practice.service.RandomUtil;
+import lab1.practice.util.RandomUtil;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.util.ReflectionUtils;
@@ -15,7 +15,7 @@ import java.lang.reflect.Field;
  */
 public class InjectRandomPostProcessor implements BeanPostProcessor {
     public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
-        Class clazz = bean.getClass();
+        Class<?> clazz = bean.getClass();
         for (Field field : clazz.getDeclaredFields()) {
             InjectRandom annotation = field.getDeclaredAnnotation(InjectRandom.class);
             if (annotation != null) {

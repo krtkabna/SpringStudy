@@ -5,12 +5,10 @@ public class MessagePrinter implements Printer {
     @InjectRandom
     private String message;
 
-    // создать аннотацию и аннотировать поле так, что бы при поднятии контекста
-    // в поле инжектилось случайное число от 0 до числа заданого при помощи аннотации
-    @InjectRandom(limit = "9")
+    @InjectRandom(limit = 9)
     private int count;
 
-    @InjectRandom(limit = "4.2")
+    @InjectRandom(limit = 5)
     private double aDouble;
 
     public void print() {

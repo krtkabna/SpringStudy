@@ -1,13 +1,10 @@
 package lab2.practice;
 
 
-import lab2.example.DeprecatedClass;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.beans.factory.config.BeanFactoryPostProcessor;
 import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
-import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
 
 /**
  * Класс должен содержать логику подмены значений филдов заданых по умолчанию в контексте.

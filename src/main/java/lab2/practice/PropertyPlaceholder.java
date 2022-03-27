@@ -1,9 +1,13 @@
 package lab2.practice;
 
 
+import lab2.example.DeprecatedClass;
 import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.beans.factory.config.BeanFactoryPostProcessor;
 import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
 
 /**
  * Класс должен содержать логику подмены значений филдов заданых по умолчанию в контексте.
@@ -16,9 +20,21 @@ import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
  */
 
 public class PropertyPlaceholder implements BeanFactoryPostProcessor {
-    private PropertyRepository propertyRepository;
+    private static final String MESSAGE = "message";
 
     public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) throws BeansException {
-
+        for (String beanDefinitionName : beanFactory.getBeanDefinitionNames()) {
+            BeanDefinition beanDefinition = beanFactory.getBeanDefinition(beanDefinitionName);
+            String beanClassName = beanDefinition.getBeanClassName();
+            try {
+                Class<?> clazz = Class.forName(beanClassName);
+                if (Printer.class.isAssignableFrom(clazz)) {
+                    String message = PropertyRepository.get(MESSAGE);
+                    beanDefinition.getPropertyValues().add(MESSAGE, message);
+                }
+            } catch (ClassNotFoundException e) {
+                throw new RuntimeException("Could not find class by name: " + beanClassName, e);
+            }
+        }
     }
 }

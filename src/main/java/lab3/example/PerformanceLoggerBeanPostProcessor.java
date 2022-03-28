@@ -4,7 +4,6 @@ package lab3.example;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.util.ReflectionUtils;
-
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
@@ -12,8 +11,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class PerformanceLoggerBeanPostProcessor implements BeanPostProcessor {
-    Map<String, Class<?>> map = new HashMap<String, Class<?>>();
+    Map<String, Class<?>> map = new HashMap<>();
 
+    @Override
     public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
         Class<?> beanClass = bean.getClass();
         Logger annotation = beanClass.getAnnotation(Logger.class);
@@ -23,6 +23,7 @@ public class PerformanceLoggerBeanPostProcessor implements BeanPostProcessor {
         return bean;
     }
 
+    @Override
     public Object postProcessAfterInitialization(final Object bean, String beanName) throws BeansException {
         Class<?> clazz = map.get(beanName);
         if (clazz != null) {

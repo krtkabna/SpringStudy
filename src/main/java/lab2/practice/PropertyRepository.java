@@ -9,7 +9,6 @@ public class PropertyRepository {
             put("user", "tolik");
             put("password", "*****");
             put("url", "www.github.com/login");
-            put("message", "miraculous");
         }
     };
 

@@ -1,7 +1,5 @@
 package lab3.example;
 
-import lab3.practice.annotation.Transactional;
-
 @Logger
 public class MessagePrinter implements Printer {
     private String message;
@@ -15,11 +13,11 @@ public class MessagePrinter implements Printer {
         }
     }
 
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
     public String getMessage() {
         return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
     }
 }

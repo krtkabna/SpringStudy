@@ -10,11 +10,11 @@ public class MessagePrinter implements Printer {
         System.out.println(message);
     }
 
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
     public String getMessage() {
         return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
     }
 }

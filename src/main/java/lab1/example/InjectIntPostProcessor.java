@@ -4,7 +4,6 @@ package lab1.example;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.util.ReflectionUtils;
-
 import java.lang.reflect.Field;
 
 public class InjectIntPostProcessor implements BeanPostProcessor {

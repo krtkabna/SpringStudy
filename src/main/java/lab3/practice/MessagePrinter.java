@@ -3,7 +3,6 @@ package lab3.practice;
 import lab3.practice.annotation.Logger;
 import lab3.practice.annotation.Transactional;
 import lombok.extern.slf4j.Slf4j;
-import org.slf4j.LoggerFactory;
 
 @Logger
 @Slf4j
@@ -20,12 +19,12 @@ public class MessagePrinter implements Printer {
         }
     }
 
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
     public String getMessage() {
         return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
     }
 }
 
